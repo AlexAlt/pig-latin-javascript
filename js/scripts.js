@@ -1,19 +1,29 @@
 var pigLatin = function(message) {
+  var words = message.split(' ');
+  var translatedMessage = [];
+
+  words.forEach(function(word) {
+    translatedMessage.push(translateWord(word));
+  });
+
+  return translatedMessage.join(' ');
+}
+
+var translateWord = function(word) {
   var vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
-  var splitMessage = message.split("");
+  var splitWord = word.split("");
   var consonants = '';
 
-  var index = vowels.indexOf(splitMessage[0].toLowerCase());
-  if (splitMessage[0].toLowerCase() === 'y') {
-    consonants += splitMessage.shift();
+  var index = vowels.indexOf(splitWord[0].toLowerCase());
+  if (splitWord[0].toLowerCase() === 'y') {
+    consonants += splitWord.shift();
   }
   while (index === -1) {
-    consonants += splitMessage.shift();
-    index = vowels.indexOf(splitMessage[0].toLowerCase());
+    consonants += splitWord.shift();
+    index = vowels.indexOf(splitWord[0].toLowerCase());
   }
-  if (splitMessage[0] === 'u') {
-    consonants += splitMessage.shift();
+  if (splitWord[0] === 'u') {
+    consonants += splitWord.shift();
   }
-  var translation = splitMessage.join('') + consonants + 'ay';
-  return translation;
+  return splitWord.join('') + consonants + 'ay';
 }

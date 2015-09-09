@@ -24,4 +24,8 @@ describe("pigLatin", function() {
     expect(pigLatin("Skydive")).to.equal("ydiveSkay")
   });
 
+  it('works for a sentence', function() {
+    expect(pigLatin("Apples are skydiving")).to.equal("Applesay areay ydivingskay")
+  });
+
 });
