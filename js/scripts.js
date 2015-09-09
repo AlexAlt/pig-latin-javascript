@@ -10,17 +10,14 @@ var pigLatin = function(message) {
 }
 
 var translateWord = function(word) {
-  var vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
   var splitWord = word.split("");
   var consonants = '';
 
-  var index = vowels.indexOf(splitWord[0].toLowerCase());
   if (splitWord[0].toLowerCase() === 'y') {
     consonants += splitWord.shift();
   }
-  while (index === -1) {
+  while (splitWord[0].toLowerCase().match(/[aeiouy]/) === null) {
     consonants += splitWord.shift();
-    index = vowels.indexOf(splitWord[0].toLowerCase());
   }
   if (splitWord[0] === 'u') {
     consonants += splitWord.shift();
